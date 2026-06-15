@@ -67,11 +67,12 @@ find k8s/deployments/ -name "*.yaml" -exec \
 # MongoDB Atlas connection strings
 kubectl create secret generic app-secrets \
   -n med-erp \
-  --from-literal=MONGODB_URI_USER="mongodb+srv://..." \
-  --from-literal=MONGODB_URI_PRODUCT="mongodb+srv://..." \
-  --from-literal=MONGODB_URI_ORDER="mongodb+srv://..." \
-  --from-literal=JWT_SECRET="your-256-bit-hex-secret" \
+  --from-literal=MONGODB_URI_USER="mongodb+srv://shoaib:pass123@cluster0.vgq0qdx.mongodb.net/users_db?appName=Cluster0" \
+  --from-literal=MONGODB_URI_PRODUCT="mongodb+srv://shoaib:pass123@cluster0.vgq0qdx.mongodb.net/orders_db?appName=Cluster0" \
+  --from-literal=MONGODB_URI_ORDER="mongodb+srv://shoaib:pass123@cluster0.vgq0qdx.mongodb.net/products_db?appName=Cluster0" \
+  --from-literal=JWT_SECRET="404E635266556A586E3272357538782F413F4428472B4B6250645367566B5970" \
   --dry-run=client -o yaml | kubectl apply -f -
+
 ```
 
 ---
